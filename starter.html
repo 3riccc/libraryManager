@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DDog图书馆管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.5 -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+    <link rel="stylesheet" href="dist/css/me/style.css">
+    <script src="script/angular-min.js"></script>
+    <script src="script/starter.js"></script>
+
+  </head>
+  <body class="hold-transition skin-blue sidebar-mini" ng-controller="starterCtrl">
+    <div class="wrapper">
+
+      <!-- Main Header -->
+      <header class="main-header">
+
+        <!-- Logo -->
+        <a href="index2.html" class="logo">
+          <!-- mini logo for sidebar mini 50x50 pixels -->
+          <span class="logo-mini"><b>D</b>Dog</span>
+          <!-- logo for regular state and mobile devices -->
+          <span class="logo-lg"><b>DDog</b>管理系统</span>
+        </a>
+        <!-- Header Navbar -->
+        <nav class="navbar navbar-static-top" role="navigation">
+          <!-- Sidebar toggle button-->
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only"></span>
+          </a>
+          <!-- Navbar Right Menu -->
+          <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+              <!-- User Account Menu -->
+              <li class="dropdown user user-menu">
+                <!-- Menu Toggle Button -->
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <!-- The user image in the navbar-->
+                  <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                  <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                  <span class="hidden-xs">张章</span>
+                </a>
+                <ul class="dropdown-menu">
+                  <!-- Menu Footer-->
+                  <li class="user-footer">
+                    <div class="pull-left">
+                      <a href="#" class="btn btn-default btn-flat">跳转</a>
+                    </div>
+                    <div class="pull-right">
+                      <a href="#" class="btn btn-default btn-flat" ng-click="logOut()">注销</a>
+                    </div>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Left side column. contains the logo and sidebar -->
+      <aside class="main-sidebar">
+
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+
+          <!-- Sidebar user panel (optional) -->
+          <div class="user-panel">
+            <div class="pull-left image">
+              <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+              <p>张章</p>
+              <!-- Status -->
+              <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+          </div>
+
+          <!-- search form (Optional) -->
+          <form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+              <input type="text" name="q" class="form-control" placeholder="Search...">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
+              </span>
+            </div>
+          </form>
+          <!-- /.search form -->
+
+          <!-- Sidebar Menu -->
+          <ul class="sidebar-menu">
+            <li class="header">HEADER</li>
+            
+            <li class="active"><a href="starter.html"><i class="fa fa-link"></i> <span>图书情况查询</span></a></li>
+            <li class="active"><a href="my_info.html"><i class="fa fa-link"></i> <span>我的信息</span></a></li>
+          </ul><!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+      </aside>
+
+      <!-- Content Wrapper. Contains page content -->
+      <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+          <h1>
+            图书情况查询
+            <small></small>
+          </h1>
+          <ol class="breadcrumb">
+            <li><a href="starter.html"><i class="fa fa-dashboard"></i>图书情况查询</a></li>
+          </ol>
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+          <div class="col-xs-12">
+            <div class="box overflow-x">
+              <div class="box-header" style="padding-bottom:0px">
+                <div class="row">
+                  <div class="col-xs-8">
+                    <h3 class="box-title">图书列表</h3>
+                  </div>
+                  <div class="col-xs-4 row">
+                  <div class="col-xs-4">
+                    <select class="form-control search-type ng-pristine ng-untouched ng-valid ng-valid-required" name="loanType" ng-model="searchTypeId" required="">
+                      <option value="0">书号</option>
+                      <option value="1">书名</option>
+                      <option value="2">作者</option>
+                      <option value="3">出版社</option>
+                      <option value="4">类别</option>
+                    </select>
+                    </div>
+                    <div class="input-group search-bar-all col-xs-8">
+                      <input type="text" class="form-control search-bar ng-pristine ng-untouched ng-invalid ng-invalid-required" ng-model="searchItemInfo" placeholder="请输入图书信息" required="">
+                      <span class="input-group-btn">
+                        <butto ng-click="searchStart()" type="submit" name="search" id="search-btn" class="btn btn-flat search-btn"><i class="fa fa-search"></i>
+                      </butto></span>
+                    </div>
+                  </div>
+                </div>
+                <ul class="nav nav-tabs">
+                  <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true" ng-click="getUserList()">图书列表</a></li>
+                </ul>
+              </div><!-- /.box-header -->
+              <div class="box-body" style="padding-top:0px">
+                <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+                  <div class="row">
+                    <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12">
+                      <table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                        <thead>
+                          <tr role="row">
+                            <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1"></th>
+                            <th class="sorting nowrap" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">书号</th>
+                            <th class="sorting nowrap" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">书名</th>
+                            <th class="sorting nowrap" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">作者</th>
+                            <th class="sorting nowrap" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">出版社</th>
+                            <th class="sorting nowrap" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">类别</th>
+                            <th class="sorting nowrap" tabindex="0" aria-controls="example2" rowspan="1" colspan="1">借阅</th>
+                  
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <!-- ngRepeat: fc in list -->
+                          <tr role="row" class="odd ng-scope" ng-repeat="book in books">
+                            <td class="sorting_1  nowrap">
+                              <input id="567cb89060b287824f3c9927" type="checkbox">
+                            </td>
+                            <td class="nowrap ng-binding" ng-bind="book.bookId"></td><!-- 编号 -->
+                            <td class="nowrap ng-binding" ng-bind="book.bookName"></td>
+                            <td class="nowrap ng-binding" ng-bind="book.bookAuthor"></td>
+                            <td class="nowrap ng-binding" ng-bind="book.bookPublish"></td>
+                            <td class="nowrap ng-binding" ng-bind="book.bookCategory"></td>
+                            <td class="nowrap"><span class="word-to-be-clicked" ng-click="borrow(book)" ng-bind="book.bookStatusInfo"></span></td>
+                          </tr><!-- end ngRepeat: fc in list -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <div class="row">
+                      <!-- <div class="col-md-3" style="padding-left:20px;">
+                        <input type="checkbox" id="selectAll" ng-click="selectAll()">全选
+                      </div>
+                      <div ng-show="user" class="col-md-3 under-list-button-padding">
+                        <button class="btn btn-block btn-default btn-sm" onclick="window.location.href='/pc/user_add.html'">添加用户</button>
+                      </div> -->
+                    </div>
+                  </div>
+                  <div class="col-md-8">
+                    <div class="pager_wrap">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Your Page Content Here -->
+
+        </section><!-- /.content -->
+      </div><!-- /.content-wrapper -->
+
+      <!-- Main Footer -->
+      <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+          powered by DDog
+        </div>
+        <!-- Default to the left -->
+        <strong>Copyright &copy; 2015 <a href="#">数据库实验</a>.</strong> All rights reserved.
+      </footer>
+
+      <!-- Control Sidebar -->
+      <aside class="control-sidebar control-sidebar-dark">
+        <!-- Create the tabs -->
+        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
+          <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+          <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
+        </ul>
+      </aside>
+      <div class="control-sidebar-bg"></div>
+    </div>
+    <script src="plugins/jQuery/jQuery-2.1.4.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="dist/js/app.min.js"></script>
+
+    <!-- Optionally, you can add Slimscroll and FastClick plugins.
+         Both of these plugins are recommended to enhance the
+         user experience. Slimscroll is required when using the
+         fixed layout. -->
+  </body>
+</html>
